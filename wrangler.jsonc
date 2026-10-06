@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "s1791-verifier-button-spike",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "observability": { "enabled": true },
+  "containers": [
+    { "class_name": "SpikeVerifier", "image": "./container/Dockerfile", "instance_type": "standard-2", "max_instances": 1 }
+  ],
+  "durable_objects": { "bindings": [{ "name": "SPIKE", "class_name": "SpikeVerifier" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["SpikeVerifier"] }],
+  "r2_buckets": [{ "binding": "DATA", "bucket_name": "s1791-button-spike" }],
+  "triggers": { "crons": ["* * * * *"] }
+}
