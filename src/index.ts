@@ -2,6 +2,7 @@
 // skeleton into a seller's own account? Reads no data. Every route needs the
 // SPIKE_SECRET the deployer chose.
 import { Container, getContainer } from "@cloudflare/containers";
+export { ContainerProxy } from "@cloudflare/containers";
 
 interface Env {
   SPIKE: DurableObjectNamespace<SpikeVerifier>;
