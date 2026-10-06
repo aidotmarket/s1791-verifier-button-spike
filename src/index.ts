@@ -13,8 +13,9 @@ interface Env {
 export class SpikeVerifier extends Container<Env> {
   defaultPort = 8080;
   sleepAfter = "5m";
-  enableInternet = false;
-  allowedHosts = ["api.ai.market"];
+  // Max 2026-10-06: same as AWS - normal internet; production code dials only
+  // api.ai.market:443 and pins the ISRG roots.
+  enableInternet = true;
 
   private log(kind: string, detail = "") {
     this.ctx.storage.sql.exec(
